@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Lab10.Infrastructure.Context;
+namespace Lab10.Domain2.Models;
 
 public partial class Course
 {

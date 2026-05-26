@@ -1,23 +1,11 @@
 {
   "Version": 1,
-  "Hash": "UpOYaO1DpVIBEfrJteVHjW6gpaZEV60u9QtL/A12pEo=",
+  "Hash": "kcJlC2Jxl/rYA9m6D8eHYksStnUTjnRVKgO/u+TQ65o=",
   "Source": "Lab10",
   "BasePath": "_content/Lab10",
   "Mode": "Default",
   "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [
-    {
-      "Identity": "C:\\Users\\User\\RiderProjects\\Lab10\\Lab10.Infrastructure\\Lab10.Infrastructure.csproj",
-      "Version": 2,
-      "Source": "Lab10.Infrastructure",
-      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
-      "AdditionalPublishProperties": "",
-      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
-      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
-      "AdditionalBuildProperties": "",
-      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
-    }
-  ],
+  "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
   "Assets": []
 }

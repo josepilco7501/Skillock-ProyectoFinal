@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Lab10.Domain2.Models;
 
-namespace Lab10.Infrastructure.Context;
+namespace Lab10.Infrastructure2.Context;
 
 public partial class Lab10Context : DbContext
 {

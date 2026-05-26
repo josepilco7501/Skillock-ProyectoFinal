@@ -1,4 +1,4 @@
-﻿namespace Lab10.Domain.Interfaces;
+﻿namespace Lab10.Domain2.Interfaces;
 
 public interface IUnitOfWork
 {

@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\Lab10.Application.props" />
-</Project>

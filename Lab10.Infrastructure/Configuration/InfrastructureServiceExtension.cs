@@ -1,35 +1,63 @@
-﻿using Lab10.Infrastructure.Context;
-
-namespace Lab10.Infrastructure.Configuration;
-
-using Microsoft.EntityFrameworkCore;
+﻿using System.Reflection;
+using System.Text;
+using Lab10.Application2.Interfaces;
+using Lab10.Domain2.Interfaces;
+using Lab10.Infrastructure2.Context; 
+using Lab10.Infrastructure2.Repositories;
+using Lab10.Infrastructure2.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-// Asegúrate de cambiar estos namespaces por los nombres reales de tus carpetas/proyectos
-// using TrainingCenter.Infrastructure.Context; 
-// using TrainingCenter.Domain.Interfaces;
-// using TrainingCenter.Infrastructure.Repositories;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.EntityFrameworkCore; 
+using MediatR;
 
+namespace Lab10.Infrastructure2.Configuration;
 
-public static class InfrastructureServicesExtensions
+public static class InfrastructureServiceExtension
 {
     public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
     {
-        // Dabase connection
-        services.AddDbContext<Lab10Context>((serviceProvider, options) =>
-        {
-            var connectionString = configuration.GetConnectionString("DefaultConnection");
-            options.UseSqlServer(connectionString);
-        });
+        // Db context
+        services.AddDbContext<Lab10Context>(options =>
+            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+        // Configuración de Validación de Token JWT
+        var jwtSettings = configuration.GetSection("JwtSettings");
+        var secretKey = jwtSettings.GetValue<string>("Secret");
 
-        // Services register
-        // services.AddTransient<IUnitOfWork, UnitOfWork>();
-        // services.AddScoped<IAuthService, AuthService>();
-        // services.AddScoped<IFileService, FileService>();
-        // services.AddScoped<IUploadFileToAzureStorageService, UploadFileToAzureStorageService>();
-        // services.AddScoped<IActivityService, ActivityService>();
+        services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = jwtSettings.GetValue<string>("Issuer"),
+                    ValidAudience = jwtSettings.GetValue<string>("Audience"),
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey!))
+                };
+            });
 
+        // Registro de los servicios del módulo de autenticación
+        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IAuthService, AuthService>();
+        
+        // inyeccion de depdenencias
+        services.AddScoped<ICourseRepository, CourseRepository>();
+        
+        // Configuración de MediatR para mapear automáticamente todas tus clases en Application
+        // MediatR viajará a Application, buscará IAuthService y registrará TODOS tus UseCases automáticamente
+        services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(IAuthService).Assembly));
+        
+        // Ya no necesitas registrar tus casos de uso uno por uno (como LoginUseCase) 
+        // porque MediatR se encargará de resolver los Handlers de forma automática.
+        
         return services;
     }
 }
-
