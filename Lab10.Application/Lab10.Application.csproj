@@ -12,7 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="UseCases\UserUseCase\Commands\" />
+      <Folder Include="UseCases\UserUseCase\Querys\" />
     </ItemGroup>
 
     <ItemGroup>

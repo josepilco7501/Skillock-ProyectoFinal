@@ -51,12 +51,20 @@ public static class InfrastructureServiceExtension
         // inyeccion de depdenencias
         services.AddScoped<ICourseRepository, CourseRepository>();
         
+        // REGISTRO DEL SERVICIO PARA HANGFIRE (Agregado aquí)
+        services.AddTransient<NotificationService>();
+        
+        //Registro obligatorio del contrato (Interfaz) y su implementación real
+        services.AddScoped<IBackgroundJobService, BackgroundJobService>();
+        
         // Configuración de MediatR para mapear automáticamente todas tus clases en Application
         // MediatR viajará a Application, buscará IAuthService y registrará TODOS tus UseCases automáticamente
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(IAuthService).Assembly));
         
         // Ya no necesitas registrar tus casos de uso uno por uno (como LoginUseCase) 
         // porque MediatR se encargará de resolver los Handlers de forma automática.
+        
+        
         
         return services;
     }

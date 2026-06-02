@@ -21,15 +21,21 @@ public class CoursesController : ControllerBase
     public async Task<IActionResult> Create([FromBody] CreateCourseCommand command)
     {
         var courseId = await _mediator.Send(command);
-        return CreatedAtAction(nameof(GetById), new { id = courseId }, new { Id = courseId, Message = "Curso creado con éxito 🚀" });
+        
+        // CORREGIDO: Cambiamos 'id' por 'CourseId' para emparejar con el endpoint GetById
+        return CreatedAtAction(
+            nameof(GetById), 
+            new { CourseId = courseId }, 
+            new { Id = courseId, Message = "Curso creado con éxito 🚀" }
+        );
     }
 
     // 2. Endpoint para Obtener por ID (Query)
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetById([FromRoute]GetCourseByIdQuery request)
+    [HttpGet("{CourseId}")]
+    public async Task<IActionResult> GetById([FromRoute] GetCourseByIdQuery request)
     {
         var course = await _mediator.Send(request);
-       
+   
         return Ok(course);
     }
 
