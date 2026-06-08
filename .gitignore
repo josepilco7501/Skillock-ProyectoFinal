@@ -1,19 +1,22 @@
-﻿# Carpetas de compilación y dependencias (NUNCA se suben)
-bin/
-obj/
+﻿# --- DETECTADO PARA .NET 8 & RIDER ---
 
-# Configuración del entorno de desarrollo de JetBrains Rider
-.idea/
-*.sln.DotSettings.user
+# Logs y cachés de compilación de .NET
+*.log
+.crash
+_ReSharper.*/
+*.dtb.cache
 
-# Archivos de usuario y temporales
-*.suo
-*.user
-*.userosscache
-*.sln.docstates
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
 
-# Configuración local que puede contener contraseñas
-appsettings.Development.json
+# Herramientas de desarrollo locales
+.devcontainer/
+secrets.json
 
-# Carpetas de paquetes de Rider/Visual Studio
-.vs/
+# Publicación y empaquetado
+/publish/
+*.nupkg
+
+# Si usas herramientas de frontend (opcional)
+node_modules/

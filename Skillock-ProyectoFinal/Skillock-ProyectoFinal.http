@@ -1,0 +1,6 @@
+@Skillock_ProyectoFinal_HostAddress = http://localhost:5202
+
+GET {{Skillock_ProyectoFinal_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
