@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skillock-ProyectoFinal", "Skillock-ProyectoFinal\Skillock-ProyectoFinal.csproj", "{DC16BFD2-A399-4F75-A043-8A5CBB0CFC98}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skillock", "Skillock\Skillock.csproj", "{DC16BFD2-A399-4F75-A043-8A5CBB0CFC98}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skillock.Domain", "Skillock.Domain\Skillock.Domain.csproj", "{66A47C1C-8492-4E0C-BE45-E3EDD733A192}"
 EndProject

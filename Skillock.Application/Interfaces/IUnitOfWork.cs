@@ -25,7 +25,7 @@ public interface IUnitOfWork : IAsyncDisposable
     /// Abre una transacción de BD explícita. Usar en operaciones que
     /// tocan múltiples agregados (ej: aporte que modifica Wallet + BetParty + WalletTransaction).
     /// </summary>
-    Task BeginTransactionAsync(CancellationToken cancellationToken = default);
+    Task BeginTransactionAsync(System.Data.IsolationLevel isolationLevel, CancellationToken cancellationToken = default);
     Task CommitTransactionAsync(CancellationToken cancellationToken = default);
     Task RollbackTransactionAsync(CancellationToken cancellationToken = default);
 }

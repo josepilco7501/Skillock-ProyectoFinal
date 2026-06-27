@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "hcMiDSIt5OA=",
+  "dgSpecHash": "xu70rfxaj3w=",
   "success": true,
-  "projectFilePath": "/home/josepilco/RiderProjects/Skillock-ProyectoFinal/Skillock-ProyectoFinal/Skillock-ProyectoFinal.csproj",
+  "projectFilePath": "/home/josepilco/RiderProjects/Skillock-ProyectoFinal/Skillock/Skillock.csproj",
   "expectedPackageFiles": [
     "/home/josepilco/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
+    "/home/josepilco/.nuget/packages/mediatr/12.4.1/mediatr.12.4.1.nupkg.sha512",
+    "/home/josepilco/.nuget/packages/mediatr.contracts/2.0.1/mediatr.contracts.2.0.1.nupkg.sha512",
     "/home/josepilco/.nuget/packages/microsoft.aspnetcore.openapi/8.0.26/microsoft.aspnetcore.openapi.8.0.26.nupkg.sha512",
     "/home/josepilco/.nuget/packages/microsoft.bcl.asyncinterfaces/6.0.0/microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
     "/home/josepilco/.nuget/packages/microsoft.codeanalysis.analyzers/3.3.3/microsoft.codeanalysis.analyzers.3.3.3.nupkg.sha512",
